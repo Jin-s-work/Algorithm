@@ -40,8 +40,9 @@ void DFS(int sum){
         v.erase(v.begin() + i);
         // v[i] 지우기
         DFS(sum + energy);
+        // v[i]를 지웠다고 가정하고 이 값을 다음에 넣어주고 해본다.
         v.insert(v.begin() + i, mid);
-        // 지웠다가 다시 넣어줌..? 사실 재귀가 잘 이해가 가지 않는다.
+        // 위가 최대가 아닐 경우에는 다시 mid를 그 위치에 다시 넣어준다.
     }
     
     
