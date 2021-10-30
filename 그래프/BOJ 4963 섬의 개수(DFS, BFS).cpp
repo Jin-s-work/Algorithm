@@ -27,6 +27,37 @@ int dx[8] = {0,0,1,-1, 1, 1, -1, -1};
 int dy[8] = {1,-1,0,0, 1, -1, 1, -1};
 int ans = 0;
 
+void BFS(int x, int y){
+    queue<pair<int, int>>q;
+    q.push({x, y});
+    check[x][y] = true;
+    
+    while(!q.empty()){
+        x = q.front().first;
+        y = q.front().second;
+        q.pop();
+        
+        
+        for(int i=0;i<8;i++){
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            
+            if(nx < 0 || nx > h || ny < 0 || ny > w)
+                continue;
+        
+            if(!check[nx][ny] && arr[nx][ny]){
+                check[nx][ny] = true;
+                q.push({nx, ny});
+            }
+        
+        }
+        
+        
+    }
+    
+    
+}
+
 void DFS(int x, int y){
     
     check[x][y] = true;
@@ -72,7 +103,7 @@ int main(){
             for(int j=0;j<w;j++){
                 if(!check[i][j] && arr[i][j]){
                     ans++;
-                    DFS(i, j);
+                    BFS(i, j);
                 }
             }
         }
@@ -93,3 +124,5 @@ int main(){
 
 // 처음에는 익숙하지 않았지만, 그래도 계속 하다 보니까 DFS가 좀 익숙해진 듯..
 // 더 많이 풀어봐야겟다
+
+// BFS, DFS 모두 구현해 보았다.
