@@ -87,3 +87,18 @@ int main(){
     return 0;
 }
 
+
+
+//string s;
+//cin >> s;
+//
+//while (s.find("XXXX") != string::npos)
+//s = s.replace(s.find("XXXX"), 4, "AAAA");
+//while (s.find("XX") != string::npos)
+//s = s.replace(s.find("XX"), 2, "BB");
+//if (s.find("X") != string::npos)
+//cout << -1;
+//else
+//cout << s;
+
+// 이 처럼 그냥 replace로도 그냥 할 수 있는 듯..?
