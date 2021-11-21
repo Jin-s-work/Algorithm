@@ -80,3 +80,27 @@ int main(){
 
 // 확장자 개수가 최대 5만개이므로 O(nlogn)을 사용하여야 한다고 한다.
 // char를 하는 내 방식보다는 확실히 string으르 사용하여 빠를 거 같긴 한데 제대로는 잘 모르겠다.
+
+//
+//map<string, int>mp;
+//
+//int main(){
+//
+//    ios_base::sync_with_stdio(0);
+//    cin.tie(0);
+//
+//    cin >> n;
+//    for(int i=0;i<n;i++){
+//        string s;
+//        cin >> s;
+//        s = s.substr(s.find('.') + 1);
+//        mp[s]++;
+//    }
+//
+//    for (auto k = mp.begin(); k != mp.end(); k++){
+//        cout << (*k).first << " " << (*k).second << '\n';
+//    }
+//
+//    return 0;
+//
+//}
