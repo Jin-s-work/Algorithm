@@ -1,4 +1,3 @@
-
 #include <iostream>  // stdio.h 와 같은 것
 #include <vector>
 #include <string>
@@ -7,7 +6,7 @@
 #include <queue>
 #include <cstring>
 #include <cmath>
-#include <cstring>
+#include <functional>
 #include <map>
 #include <set>
 
@@ -19,50 +18,58 @@ using ll = long long;
 using namespace std;
 int n,m,k;
 int l,r,t;
-int h;
+int h, w;
+
 
 vector<int>v;
 
 void get(string s){
     
     int m = s.size();
-    v.resize(s.size(), 0);      // v를 string 만큼 사이즈로 크기를 조정해준다음
-    int j = 0;      // j는 움직이는 인덱스를 생각하면 댐
+    v.resize(s.size(), 0);  // 모두 0으로 세팅
+    // v를 배열로 사용하기 위해서는 사이즈를 할당해주어야 한다.
     
+    int idx = 0;
     for(int i=1;i<m;i++){
-        while((j > 0) && (s[i] != s[j])){       // j가 양수이고 s의 i위치와 j위치가 다를 경우
-            j = v[j-1];         // 다를 경우 v[j-1]로 다시 가서 j에 넣어준다.
+        while((idx>0) && (s[i] != s[idx])){   // 인덱스가 양수이고, s의 i와 인덱스의 위치가 다를 경우
+            idx = v[idx - 1];                 // 그 경우 v[idx-1]로 다시 가서 idx에 넣어준다.
+            // while로 이렇게 계속 넣어주는 이유는 최대한 중간을 뛰어넘기 위함이다.
         }
-        if(s[i] == s[j]){       // 같을 경우
-            j++;                // j를 늘려서
-            v[i] = j;           // v[i]에 j를 저장해준다.
+        if(s[i] == s[idx]){     // 같을 경우에는
+            idx++;              // 인덱스를 늘려주면서
+            v[i] = idx;         // 인덱스의 값을 v에 저장해준다.
+            
+            // 이 부분에서 맞는 경우를 v에 저장해주면서 앞으로 나아간 뒤,
+            // 그 다음 s[idx]가 같지 않은 경우 활용하여 참고하여 거기부터 idx를 다시 진행해나가면 된다.
         }
-        // 이런식으로 같으면 계속 j를 늘리고 아닐 경우 j를 0으로 해서 다시 해준다.
-    }           // 문자열 접미사 접두사를 확인하는 배열을 만든다.
+    }
+    // 이러한 식으로 s의 i와 idx가 같을 경우 인덱스를 늘려주면서 그 인덱스를 v에 넣어가면서 해준다.
+    // 여기서 접미사 접두사를 찾는 배열 v를 만든다.
 }
 
 bool KMP(string s, string p){
-    int n = s.size();
-    int m = p.size();
-    int j = 0;
+    int size_s = s.size();
+    int size_p = p.size();
+    int idx = 0;
     
-    for(int i=0;i<n;i++){
-        while((j > 0) && (s[i] != p[j])){
-            j = v[j-1];
-        }               // s와 p를 비교해서 그 곳이 다를 경우
+    for(int i=0;i<size_s;i++){
+        while((idx > 0) && (s[i] != p[idx])){
+            idx = v[idx - 1];
+        }
         
-        if(s[i] == p[j]){           // 같을 경우
-            if(j == m - 1){         // 그리고 j가 맨 마지막까지 갔을 경우
-                return true;        // true를 리턴하고 빼준다.
+        if(s[i] == p[idx]){         // s의
+            if(idx == size_p-1){         // 인덱스가 맨 마지막에 도달했을 경우 true로 하고 나옴
+                return true;
                 break;
             }
-            else                    // 아직 j가 m-1이 아닐 경우 계속 증가시켜줌
-                j++;
+            else                    // 아직 m-1이 아닐 경우 계속 증가시켜줌
+                idx++;
         }
     }
-    return false;
     
+    return false;
 }
+
 
 int main(){
 
@@ -70,13 +77,21 @@ int main(){
     cin.tie(0);
     
     string s, p;
-    
-    cin >> s >> p;
+    cin >> s;
+    cin >> p;
     
     get(s);
-    cout <<  KMP(s, p);
+    cout << KMP(s, p);
     
     
     
     return 0;
+
 }
+
+
+// 단순비교하면 O(n*m)으로 1억이 넘는다.
+// 골드 이상 티어는 항상 시간도 고려해 줘야 함.
+// 단순하게 하면 안되고, KMP 알고리즘을 사용하면 O(n+m)이 된다.
+
+// KMP를 저번에 이해하고 지금 다시 보니 제대로 기억 안나는 것을 보면 제대로 자주 해야할듯..!
