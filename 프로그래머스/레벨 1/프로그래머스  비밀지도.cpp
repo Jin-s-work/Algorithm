@@ -1,41 +1,43 @@
-
-
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <iostream>
 
 using namespace std;
 
-// int two(int num){       // 10진법을 2진법으로 바꾼다.
-//     int cnt = 0;
-//     for(int i=1;num>0;i*=10){   // i를 10배씩 곱해간다.
-//         int binary = num % 2;
-//         cnt += binary*i;    // 2로 나눈 나머지를 더하면서
-//         num /= 2;       // 나누었다고 치므로 2로 나눈다.
-//     }
-//     return cnt;
-// }
+
 
 vector<string> solution(int n, vector<int> arr1, vector<int> arr2) {
-    vector<string> answer(n);
+    vector<string> answer;
     
     for(int i=0;i<n;i++){
-    int wall = arr1[i] | arr2[i];
-    answer[i].assign(" ", n);
-        // 기존의 데이터를 삭제하여 " " ~ n 데이터를 할당
-    
-    for(int j = n-1;j>=0;j--){
-        if(wall % 2 != 0)
-            answer[i][j] = '#';
-        else
-            answer[i][j] = ' ';
+        arr1[i] = arr1[i] | arr2[i];
+        // 숫자 그 자체로 OR 연산을 하여 나머지로 한다.
+        string st = "";
         
-        wall /= 2;     // k를 2씩 나누어 가며 진행한다.
+        while(st.size() != n){
+            if(arr1[i] % 2 == 0){
+                st += ' ';
+            }
+            else
+                st += '#';
+            
+            arr1[i] /= 2;
+        }
+        
+        reverse(st.begin(), st.end());
+        // 밑에서 부터 거꾸로 하므로 reverse 해주어야 한다.
+        answer.push_back(st);
+        // 그 줄 자체를 answer에 넣어준다. for문 안에서
+        
     }
     
-    }
+    
     return answer;
 }
 
+// 하나라도 벽이면 전체도 벽
+// 둘다 공백이면 둘다 공백
 
 
 
