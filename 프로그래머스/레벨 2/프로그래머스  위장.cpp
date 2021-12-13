@@ -13,6 +13,9 @@ int solution(vector<vector<string>> clothes) {
     int answer = 1;
     
     unordered_map<string, int>mp;
+    // unordered_map은 시간복잡도가 O(1)이고, 중복을 허용하지 않으므로
+    // map에서 중복을 검사하는 대신 이를 사용하여 편하게 활용 가능
+    // map은 O(logn)
     
     for(auto k : clothes){
         mp[k[1]]++;
