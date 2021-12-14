@@ -49,6 +49,12 @@ int solution(vector<vector<int>> jobs) {
         }
     }
     
+    // 즉, 처음에 jobs[0][0]을 t에 저장해주고,
+    // 그 다음에 t가 이제 위의 조건에 충족하므로, pq에 끝나는 시간, 시작 시간을 넣어주고
+    // idx를 옮긴다.
+    // 그러면서 이제 모든 시간들을 pq에 넣고, 내림차순으로 정렬이 되어있으면
+    // t에 .first를 더하고 .second를 빼며 시간을 answer에 더해준다.
+    // 그 answer를 나누면 끝
     
     
     return answer / jobs.size();
