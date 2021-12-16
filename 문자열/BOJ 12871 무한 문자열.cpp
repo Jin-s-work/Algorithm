@@ -21,42 +21,31 @@ int l,r,t;
 int h, w;
 
 
-
 int main(){
     
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     
     
-    string st;
-    cin >> st;
-    bool check = true;
+    string s, t;
+    cin >> s >> t;
+    
+    string fs, ft;
     
     
-    for(int i=0;i<st.length();){
-        if(st[i] == 'p' && st[i+1] == 'i'){
-            i += 2;
-        }
-        else if(st[i] == 'k' && st[i+1] == 'a'){
-            i += 2;
-        }
-        else if(st[i] == 'c' && st[i+1] == 'h' && st[i+2] == 'u'){
-            i += 3;
-        }
-        else{
-            check = false;
-            break;
-        }
-        
-        
-        
+    for(int i=0;i<t.length();i++){
+        fs += s;
     }
+    // t의 횟수만큼 s를 더해줌
+    for(int i=0;i<s.length();i++){
+        ft += t;
+    }
+    // s의 갯수만큼 t에 더해줌
     
-    if(check)
-        cout << "YES";
+    if(fs == ft)
+        cout << 1 << '\n';
     else
-        cout << "NO";
-    
+        cout << 0 << '\n';
     
     return 0;
     
