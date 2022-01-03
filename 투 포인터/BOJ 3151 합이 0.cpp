@@ -8,6 +8,7 @@
 #include <cmath>
 #include <functional>
 #include <map>
+#include <unordered_map>
 #include <set>
 
 // control i
@@ -18,45 +19,43 @@ using ll = long long;
 using namespace std;
 int n,m,k;
 int l,r,t;
-int h, w;
+int h;
 
+ll Max = 20000;
+ll arr[40001];
 
 int main(){
-    
+
     ios_base::sync_with_stdio(0);
     cin.tie(0);
+
     
+    cin >> n;
     
-    string s, t;
-    cin >> s >> t;
+    vector<int>v(n);
     
-    string fs, ft;
-    
-    
-    for(int i=0;i<t.length();i++){
-        fs += s;
+    for(int i=0;i<n;i++){
+        cin >> v[i];
     }
-    // t의 횟수만큼 s를 더해줌
-    for(int i=0;i<s.length();i++){
-        ft += t;
+    sort(v.begin(), v.end());
+    
+    ll ans = 0;
+    for(int i=0;i<n;i++){
+        ans += arr[Max - v[i]];
+        
+        for(int j=0;j<i;j++)
+            arr[Max + v[i] + v[j]]++;
     }
-    // s의 갯수만큼 t에 더해줌
     
-    if(fs == ft)
-        cout << 1 << '\n';
-    else
-        cout << 0 << '\n';
+    cout << ans;
     
+
     return 0;
-    
+
 }
 
-//
-//7
-//1GTW
-//2PDF
-//3REF
-//3RDF
-//2REF
-//1PTF
-//3RES
+
+// 세개의 포인터..?
+// 그나마 참조한 것중에 제일 간단한 걸루...
+// 솔직히 정확히는 이해가 안간다...
+
