@@ -35,10 +35,27 @@ bool sosu(int n){
 
 
 
+
+
 int main(){
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
+    
+    
+    bool arr[1000001];
+
+    for(int i=2;i*i<=1000000;i++){
+        if(arr[i] == false){        // i가 소수일때 (false이면 소수)
+            for(int j=i*i;j<=1000000;j+=i){
+                arr[j] = true;      // j가 i*i부터 시작해서 i씩 더할 경우에
+            }                       // arr[j]는 소수가 아니므로 true로 한다.
+        }
+        
+        
+    }
+    
+    // 이렇게 써서 큰 소수 구하는 것도 괜찮은 방법이라 저장해 논다.
     
     cin >> n;
     
