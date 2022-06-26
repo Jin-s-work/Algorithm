@@ -1,5 +1,3 @@
-
-
 #include <string>
 #include <vector>
 
@@ -13,12 +11,13 @@ string solution(string number, int k) {
     for(int i=0;i<n-k;i++){     // 총 개수중에 k개만을 빼기에
         char Max = ' ';          // char 이므로 ' '
         
-        for(int j=idx+1;j<=k+i;j++){
-            if(Max < number[j]){
+        for(int j=idx+1;j<=k+i;j++){ // 이렇게 하는 이유는 더 큰 숫자가 나올 수 있어도
+            if(Max < number[j]){     // answer의 길이가 정해져있기 때문이다.
                 Max = number[j];
                 idx = j;            // Max보다 큰 숫자가 나오면 바꾸고 그 idx부터 다시 시작
             }
-        }
+        }       // answer의 사이즈가 n-k가 나와야한다.
+                // 즉 i를 대입하였을때 j <= n-1 까지 이므로
         
         answer += Max;
     }
@@ -83,9 +82,6 @@ string solution(string number, int k) {
     
 //     return answer;
 // }
-
-
-
 
 
 
