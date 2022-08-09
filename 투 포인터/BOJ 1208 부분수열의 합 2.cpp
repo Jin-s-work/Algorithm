@@ -55,7 +55,7 @@ void left(int num, int sum){
     // 합해서 m이 되려면 두개를 하나씩 더한 값이 나와야 한다.
     
     // 즉, left 수열의 부분수열의 합이 sum이 나왔을 때 map[m-sum]이 존재한다면
-    // left 수열에 sum을 더하면 m이 되므로 그 수를 더해주면 됨... 100% 이해는 아직 안가네..
+    // left 수열에 sum을 더하면 m이 되므로 그 수를 더해주면 됨...
     
     left(num + 1, sum + arr[num]);
     left(num + 1, sum);
@@ -99,3 +99,4 @@ int main(){
     return 0;
     
 }
+
