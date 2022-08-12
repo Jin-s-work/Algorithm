@@ -23,29 +23,38 @@ int l,r,t;
 int h;
       
 
-int arr[11];
-bool check[11];
+int arr[10001];
+bool check[10001];
+int ans[10001];
 
 void DFS(int num, int cnt){
     if(num == m){
         for(int i=0;i<m;i++){
-            cout << arr[i] << ' ';
+            cout << ans[i] << ' ';
         }
         cout << '\n';
         return;
     }
     
-    for(int i=cnt;i<=n;i++){
+    int tmp = 0;
+    for(int i=cnt;i<n;i++){
         
-        arr[num] = i;
-        DFS(num+1, i+1);
-        // i도 증가하게 넣어야 하므로, DFS에 하나를 더 넣어서 i+1로 넘겨 준다.
-        // tmp도 할 필요 없이 i+1 자체를 넣어주어서 cnt를 1 증가시키면 무조건 커진다.
+        if(check[i] || tmp == arr[i])
+            continue;
         
+        
+        check[i] = true;
+        ans[num] = arr[i];
+        tmp = arr[i];
+//        cout << tmp << "***  " << "num : " << num << "  " << "i : " << i << '\n';
+        
+        // 비내림차순일 경우에는 그냥 변수를 하나 더 받아주어서 for 문에 추가해주면 된다.
+        DFS(num+1, i);
+        check[i] = false;
+       
     }
-    
-}
 
+}
 
 
 int main(){
@@ -56,8 +65,12 @@ int main(){
     
     cin >> n >> m;
     
-    DFS(0, 1);
-    // 뒤의 수는 1부터 이므로 1로 넣는다.
+    for(int i=0;i<n;i++){
+        cin >> arr[i];
+    }
+    sort(arr, arr + n);
+    
+    DFS(0, 0);
     
     
     return 0;
