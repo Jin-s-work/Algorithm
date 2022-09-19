@@ -63,16 +63,45 @@ vector<int> solution(string s) {
 }
 
 
+// #include <string>
+// #include <vector>
+
+// using namespace std;
+
+// vector<int> solution(string s) {
+//     vector<int> answer;
+    
+//     int sum = 0;
+//     int num = 0;
+    
+//     while(s != "1"){
+//         int cnt = 0;
+//         for(int i=0;i<s.length();i++){
+//             if(s[i] == '1')
+//             cnt++;
+//         }
+        
+//         sum += s.length() - cnt;        // 1 빼면 0이므로
+        
+//         s = "";     // 초기화
+//         while(cnt > 0){
+//             if(cnt % 2 == 0)
+//                 s += "0";
+//             else
+//                 s += "1";
+//             cnt /= 2;
+//         }
+        
+//         num++;
+    
+//     }
+    
+//     answer.push_back(num);      // 2진 번환의 횟수
+//     answer.push_back(sum);      // 제거된 모든 0의 개수
+    
+//     return answer;
+// }
 
 
-
-
-
-
-
-
-
-
-
-
+// // 이진법으로 하려면 reverse를 해야 하지만 0의 개수, 1의 개수만 알면 되므로
 
