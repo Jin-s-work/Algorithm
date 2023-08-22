@@ -1,8 +1,6 @@
 from collections import deque
 
 
-
-    
 dx = [1,-1,0,0]
 dy = [0,0,1,-1]
 
@@ -12,17 +10,17 @@ def solution(board):
     a = len(board)
     b = len(board[0])
     
-    rx, ry = 0, 0
+    Rx, Ry = 0, 0
     for i in range(a):
         for j in range(b):
             if board[i][j] == "R":
-                rx, ry = i, j
+                Rx, Ry = i, j
                 
     def BFS():
         q = deque()
-        q.append((rx, ry))
+        q.append((Rx, Ry))
         check = [[0] * b for _ in range(a)]
-        check[rx][ry] = 1
+        check[Rx][Ry] = 1
     
         while q:
             px, py = q.popleft()
@@ -50,7 +48,7 @@ def solution(board):
             
     
     answer = BFS()
-    if answer > 0:
+    if answer != -1:
         answer -= 1
     
     
