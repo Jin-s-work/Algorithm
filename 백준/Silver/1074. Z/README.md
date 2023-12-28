@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 2200 KB, 시간: 0 ms
+메모리: 108080 KB, 시간: 120 ms
 
 ### 분류
 
@@ -12,7 +12,7 @@
 
 ### 제출 일자
 
-2021년 2월 22일 17:26:22
+2023년 12월 28일 16:08:22
 
 ### 문제 설명
 
@@ -30,7 +30,7 @@
 
 <p>다음은 N=3일 때의 예이다.</p>
 
-<p style="text-align:center"><img alt="" src="https://u.acmicpc.net/d3e84bb7-9424-4764-ad3a-811e7fcbd53f/Screen%20Shot%202020-12-30%20at%2010.50.47%20PM.png" style="width: 533px; height: 535px;"></p>
+<p style="text-align:center"><img alt="" src="" style="width: 533px; height: 535px;"></p>
 
 ### 입력 
 
