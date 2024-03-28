@@ -1,14 +1,27 @@
--- 코드를 입력하세요
+# -- 코드를 입력하세요
 
 
-# SELECT A.TITLE, A.BOARD_ID, B.REPLY_ID, B.WRITER_ID, B.CONTENTS, DATE_FORMAT(B.CREATED_DATE, '%Y-%M-%d')
-# FROM USED_GOODS_BOARD A, USED_GOODS_REPLY B
-# WHERE A.BOARD_ID = B.BOARD_ID AND A.CREATED_DATE LIKE '%2022-10%'
-# ORDER BY B.CREATED_DATE, A.TITLE
+# SELECT B.TITLE, B.BOARD_ID, R.REPLY_ID, R.WRITER_ID, R.CONTENTS, DATE_FORMAT(R.CREATED_DATE, '%Y-%m-%d')
+# FROM USED_GOODS_BOARD B, USED_GOODS_REPLY R
+# WHERE B.BOARD_ID = R.BOARD_ID AND B.CREATED_DATE LIKE '%2022-10%'
+# ORDER BY R.CREATED_DATE, B.TITLE
+
+# # 여기에서 지금 일단 B와 R을 연결해야 하므로 WHERE에서 둘을 BOARD_ID로 이어주고
+# # REPLY 테이블에서 2022년 10월에 작성된 것을 기준으로 하니까 이런식으로 해야함
+
+# # 여기에서 %m으로 해야 하는데 %M으로 해서 틀렸다..
+# # %M으로 하면 영어로 달을 나타내준다..
+
+SELECT A.TITLE, A.BOARD_ID, B.REPLY_ID, B.WRITER_ID, B.CONTENTS, LEFT(B.CREATED_DATE, 10) AS CREATED_DATE
+FROM USED_GOODS_BOARD A, USED_GOODS_REPLY B
+WHERE A.BOARD_ID = B.BOARD_ID AND A.CREATED_DATE LIKE '%2022-10%'
+ORDER BY B.CREATED_DATE, A.TITLE
 
 
-SELECT b.title, b.board_id, r.reply_id, r.writer_id, r.contents,
-       DATE_FORMAT(r.created_date, '%Y-%m-%d')
-FROM used_goods_board b, used_goods_reply r
-WHERE b.board_id = r.board_id AND b.created_date LIKE '%2022-10%'
-ORDER BY r.created_date, b.title;
+
+
+
+
+
+
+
