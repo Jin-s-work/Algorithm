@@ -18,6 +18,8 @@ def solution(n, lost, reserve):
     # lost 한 것만 제거해주고 크기를 구하면 된다.
     return n - len(set_lost)
 
+# 처음에는 reserve 한 것을 없애주지 않아서 중복으로 빌려줄 수 있지 않을까 생각했는데
+# 생각해보니까 어차피 for 문으로 돌리고 있어서 한번 다 쓰면 지나가기에 상관없다!
 
 
 
@@ -33,8 +35,11 @@ def solution(n, lost, reserve):
 #     for k in set_reserve:
 #         if k - 1 in set_lost:
 #             set_lost.remove(k-1)
+#             set_reserve.remove(k)
 #         elif k + 1 in set_lost:
 #             set_lost.remove(k+1)
+#             set_reserve.remove(k)
+
     
 #     return n - len(set_lost)
 
