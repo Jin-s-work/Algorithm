@@ -8,13 +8,13 @@ def solution(maps):
     
     n = len(maps)
     m = len(maps[0])
-    # check = [[0] * m for _ in range(n)]
-    
     q = deque()
     q.append((0,0))
-    
+    # check = [[0] * m for _ in range(n)]
+
     while q:
         x, y = q.popleft()
+        
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
@@ -27,5 +27,6 @@ def solution(maps):
         answer = -1
     else:
         answer = maps[n-1][m-1]
+    
     
     return answer
