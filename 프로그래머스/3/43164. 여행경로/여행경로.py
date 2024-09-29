@@ -3,19 +3,19 @@ def solution(tickets):
     
     check = [0] * len(tickets)
     def DFS(airport, path):
-        if len(path) == len(tickets) + 1:
+        if len(tickets) + 1 == len(path):
             answer.append(path)
             return
         
-        
         for idx, ticket in enumerate(tickets):
-            if ticket[0] == airport and not check[idx]:
-                check[idx] = True
+            if airport == ticket[0] and not check[idx]:
+                check[idx] = 1
                 DFS(ticket[1], path + [ticket[1]])
-                check[idx] = False
-        
-        
+                check[idx] = 0
+    
+    
     DFS("ICN", ["ICN"])
+    
     answer.sort()
     
     return answer[0]
