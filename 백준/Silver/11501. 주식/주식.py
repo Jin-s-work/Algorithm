@@ -1,25 +1,26 @@
-import sys
-input = sys.stdin.readline
+
+
+# 주식 하나를 산다.
+# 원하는 만큼 가지고 있는 주식을 판다
+# 아무것도 안한다
 
 t = int(input())
 
-
+answer = []
 for _ in range(t):
-    ans = 0
-    
     n = int(input())
     arr = list(map(int, input().split()))
-        
-    arr.reverse()
-    # 거꾸로 해서 다음 값들이 작으면 더해버리기
-    Max = arr[0]
 
-    for i in range(1, n):
-        if Max < arr[i]:
-            Max = arr[i]
-            continue
-        # Max 보다 클 경우에 저장하고 넘어간다. 이 경우에는 계산 안함
-        
-        ans += Max - arr[i]
-    
-    print(ans)
+    dp = [0] * n
+    dp[n-1] = arr[n-1]
+    for i in range(n-2, -1, -1):
+        dp[i] = max(arr[i], dp[i + 1])
+
+    ans = 0
+    for i in range(n):
+        ans += dp[i] - arr[i]
+
+    answer.append(ans)
+
+for k in answer:
+    print(k)
