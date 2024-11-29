@@ -1,18 +1,21 @@
+
+from itertools import combinations
 def solution(number, k):
     answer = ''
     
-    i = 0
-    while len(number) - 1 > i and k > 0:
-        if number[i] < number[i+1]:
-            # 다음의 수가 더 클 경우에는 그 number[i]를 없애주고, 없애주므로 인덱스 줄여주기
-            number = number[:i] + number[i+1:]
-            if i != 0:
-                i -= 1
+    st = []
+    for num in number:
+        while st and st[-1] < num and k > 0:
+            st.pop()
             k -= 1
-        else:
-            i += 1
+        st.append(num)
     
     if k > 0:
-        return number[:-k]
-            
-    return number
+        st = st[:-k]
+        
+    return "".join(st)
+    
+    
+    
+    
+    
