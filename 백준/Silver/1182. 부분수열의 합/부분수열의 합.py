@@ -1,22 +1,23 @@
 
 
 n, s = map(int, input().split())
+
 arr = list(map(int, input().split()))
+
 ans = 0
 
-def DFS(num, Sum):
+def DFS(num, S):
     global ans
-    if num == n:
+
+    if num >= n:
         return
-    if Sum + arr[num] == s:
+    if S + arr[num] == s:
         ans += 1
-    
-    # 안더하고 가지 뻗어나가는 경우
-    DFS(num + 1, Sum)
-    # 더하고 가지 뻗어나가는 경
-    DFS(num + 1, Sum + arr[num])
-    return
+
+    DFS(num + 1, S + arr[num])
+    DFS(num + 1, S)
+    # 여기에서 arr[num]을 선수택하고 넘어가는 경우와
+    # 안선택하고 넘어가는 경우의 
 
 DFS(0, 0)
 print(ans)
-
