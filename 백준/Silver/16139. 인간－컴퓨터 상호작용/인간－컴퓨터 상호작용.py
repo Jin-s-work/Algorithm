@@ -1,6 +1,9 @@
 
 
-s = input()
+import sys
+input = sys.stdin.readline
+
+s = input().strip()
 q = int(input())
 
 prefix = {chr(c) : [0] * (len(s) + 1) for c in range(ord('a'), ord('z') + 1)}
